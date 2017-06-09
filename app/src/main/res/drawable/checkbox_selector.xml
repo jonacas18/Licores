@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/me_gusta_48"
+        android:drawable="@drawable/beer_white"
         android:state_checked="false"/>
-
     <item
-        android:drawable="@drawable/me_gusta_relleno_48"
+        android:drawable="@drawable/beer"
         android:state_checked="true"/>
-
-    <item android:drawable="@drawable/me_gusta_48"/>
+    <item
+        android:drawable="@drawable/beer_white"/>
 </selector>

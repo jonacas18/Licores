@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/id_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/id_item_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="lastname"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/id_item_myuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="myuser"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/id_item_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/id_item_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="address"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+    <TextView
+        android:id="@+id/id_item_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="password"
+        android:layout_weight="1"
+        android:textColor="@color/colorAccent"/>
+
+</LinearLayout>

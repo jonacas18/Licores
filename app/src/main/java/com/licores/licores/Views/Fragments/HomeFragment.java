@@ -1,39 +1,31 @@
 package com.licores.licores.Views.Fragments;
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.ListView;
 
-import com.licores.licores.Adapters.UserAdapter;
-import com.licores.licores.HttpManager;
-import com.licores.licores.Models.User;
-import com.licores.licores.Parser.Json;
+import com.licores.licores.Adapters.AdapterLiqueur;
+import com.licores.licores.Data.DataLiqueur;
+import com.licores.licores.LiqueurActivity;
+import com.licores.licores.Models.Liqueur;
 import com.licores.licores.R;
 
-import java.io.IOException;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
 
     View rootView;
-    ProgressBar loader;
-    List<User> listUser;
-    RecyclerView recyclerView;
-    UserAdapter userAdapter;
+    FloatingActionButton button;
+    ListView lista;
+    DataLiqueur dataLiqueur;
+    List<Liqueur> liqueursList;
+    AdapterLiqueur adapterLiqueur;
 
 
     public HomeFragment() {
@@ -44,77 +36,28 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        loader = (ProgressBar) rootView.findViewById(R.id.loader);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.id_recycler);
+        lista = (ListView) rootView.findViewById(R.id.id_lv_mylist);
+        liqueur();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        onClickButton();
+        button = (FloatingActionButton) rootView.findViewById(R.id.btn_plus_math);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LiqueurActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
 
-    public Boolean isOnLine(){
-        ConnectivityManager connec = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = connec.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()){
-            return true;
-        }else {
-            return false;
-        }
-    }
+    public void liqueur() {
+        dataLiqueur = new DataLiqueur(getActivity());
+        dataLiqueur.open();
 
-    public void onClickButton(){
-        if (isOnLine()){
-            MyTask task = new MyTask();
-            task.execute("https://jsonplaceholder.typicode.com/users");
-        }else {
-            Toast.makeText(getActivity(), "Sin conexión", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void loadData(){
-        userAdapter = new UserAdapter(getActivity().getApplicationContext(), listUser);
-        recyclerView.setAdapter(userAdapter);
-    }
-
-    private class MyTask extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loader.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String content = null;
-            try {
-                content = HttpManager.getData(params[0]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return content;
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            try {
-                listUser = Json.parserJsonUser(s);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            loadData();
-            loader.setVisibility(View.GONE);
-        }
+        liqueursList = dataLiqueur.findAll();
+        adapterLiqueur = new AdapterLiqueur(getContext(), liqueursList);
+        lista.setAdapter(adapterLiqueur);
     }
 
 }

@@ -2,12 +2,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.licores.licores.Views.Fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_96"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="30dp">
+
+                <TextView
+                    android:id="@+id/txt_tittle_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name_profile"
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_toRightOf="@+id/txt_tittle_name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_tittle_lastname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lastname_profile"
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_below="@id/txt_tittle_name"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_lastname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_toRightOf="@+id/txt_tittle_lastname"
+                    android:layout_below="@id/txt_name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_tittle_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_profile"
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_below="@+id/txt_tittle_lastname"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_toRightOf="@+id/txt_tittle_user"
+                    android:layout_below="@id/txt_lastname"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_tittle_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_profile"
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_below="@+id/txt_tittle_user"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_toRightOf="@+id/txt_tittle_email"
+                    android:layout_below="@id/txt_user"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_tittle_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_profile"
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_below="@+id/txt_tittle_email"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/editTextColorBlack"
+                    android:layout_toRightOf="@+id/txt_tittle_address"
+                    android:layout_below="@id/txt_email"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"/>
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/edit_48"/>
 
 </FrameLayout>

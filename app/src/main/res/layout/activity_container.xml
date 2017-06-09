@@ -7,13 +7,18 @@
     android:layout_height="match_parent"
     tools:context="com.licores.licores.Views.ContainerActivity">
 
+    <include layout="@layout/actionbar_toolbar"/>
+
+
     <FrameLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/id_container_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="70dp">
-
+        android:padding="10dp"
+        android:layout_marginBottom="70dp">
     </FrameLayout>
+
 
     <include layout="@layout/bottombar"/>
 
